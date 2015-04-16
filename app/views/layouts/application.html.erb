@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuthPractice</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<ul>
+<% if current_user %>
+<li>Signed in as <strong><%= current_user.username %></strong></li>
+<li><%= link_to "Sign Out", sessions_path, method: :delete %>
+<% else %>
+<li><%= link_to "Sign Up", users_new_path %></li>
+<li><%= link_to "Sign In", signin_path %></li>
+<% end %>
+
+<li><%= link_to "You can only visit this link if you are logged in", pages_hiddenpage_path %></li>
+</ul>
+<%= yield %>
+
+</body>
+</html>
